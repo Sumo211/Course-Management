@@ -1,0 +1,14 @@
+server:
+  port: 2772
+
+spring:
+  datasource:
+    url: jdbc:postgresql:course
+    username: postgres
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

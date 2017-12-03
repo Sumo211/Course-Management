@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="459.0" y="340.0">com.leon.study.student.Student</node>
+    <node x="225.0" y="159.0">com.leon.study.course.Course</node>
+    <node x="-96.0" y="-2.0">com.leon.study.Teacher.Teacher</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.leon.study.student.Student" target="com.leon.study.course.Course">
+      <point x="-5.0" y="0.0" />
+      <point x="546.5" y="234.5" />
+      <point x="0.0" y="5.0" />
+    </edge>
+    <edge source="com.leon.study.Teacher.Teacher" target="com.leon.study.course.Course">
+      <point x="0.0" y="-5.0" />
+      <point x="327.0" y="54.5" />
+      <point x="5.0" y="0.0" />
+    </edge>
+    <edge source="com.leon.study.course.Course" target="com.leon.study.student.Student">
+      <point x="0.0" y="-5.0" />
+      <point x="556.5" y="224.5" />
+      <point x="5.0" y="0.0" />
+    </edge>
+    <edge source="com.leon.study.course.Course" target="com.leon.study.Teacher.Teacher">
+      <point x="-5.0" y="0.0" />
+      <point x="317.0" y="64.5" />
+      <point x="0.0" y="5.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="322.0" y="229.5" />
+  <SelectedNodes>
+    <node>com.leon.study.Teacher.Teacher</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
