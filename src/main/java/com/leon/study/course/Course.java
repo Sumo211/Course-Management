@@ -1,7 +1,7 @@
 package com.leon.study.course;
 
-import com.leon.study.Teacher.Teacher;
 import com.leon.study.student.Student;
+import com.leon.study.teacher.Teacher;
 import lombok.Data;
 
 import javax.persistence.*;

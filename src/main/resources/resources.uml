@@ -3,14 +3,16 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="250.5" y="-30.5">com.leon.study.student.Student</node>
-    <node x="-35.5" y="-3.5">com.leon.study.course.Course</node>
-    <node x="-29.5" y="209.5">com.leon.study.Teacher.Teacher</node>
+    <node x="0.0" y="198.0">com.leon.study.student.Student</node>
+    <node x="261.0" y="198.0">com.leon.study.teacher.Teacher</node>
+    <node x="0.0" y="0.0">com.leon.study.course.Course</node>
   </nodes>
   <notes />
   <edges />
   <settings layout="Hierarchic Group" zoom="1.0" x="322.0" y="230.0" />
-  <SelectedNodes />
+  <SelectedNodes>
+    <node>com.leon.study.teacher.Teacher</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>

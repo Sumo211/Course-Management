@@ -1,4 +1,4 @@
-package com.leon.study.Teacher;
+package com.leon.study.teacher;
 
 import com.leon.study.course.Course;
 import lombok.Data;

@@ -1,5 +1,6 @@
-package com.leon.study.Teacher;
+package com.leon.study.teacher;
 
+import com.leon.study.common.ResourceNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,8 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Teacher findOne(Long id) {
-        return teacherRepository.findOne(id);
+        return teacherRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(Teacher.class, "id", id.toString()));
     }
 
     @Override

@@ -3,9 +3,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql:course
+    #url: jdbc:postgresql:course
+    url: jdbc:postgresql://172.17.0.2:5432/course
     username: postgres
-    password: Hoaibao211
+    password: 123456
   jpa:
     hibernate:
       ddl-auto: create-drop
