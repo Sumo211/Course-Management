@@ -8,9 +8,7 @@ interface TeacherService {
 
     Teacher findOne(Long id);
 
-    Teacher createTeacher(Teacher teacher);
-
-    Teacher updateTeacher(Long id, Teacher teacher);
+    Teacher createOrUpdateTeacher(Teacher teacher);
 
     void deleteTeacher(Long id);
 

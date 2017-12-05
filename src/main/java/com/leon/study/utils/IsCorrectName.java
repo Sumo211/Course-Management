@@ -1,4 +1,4 @@
-package com.leon.study.common;
+package com.leon.study.utils;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

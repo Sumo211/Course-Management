@@ -1,4 +1,4 @@
-package com.leon.study.common;
+package com.leon.study.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

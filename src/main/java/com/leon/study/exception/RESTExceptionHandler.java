@@ -1,4 +1,4 @@
-package com.leon.study.common;
+package com.leon.study.exception;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.core.Ordered;

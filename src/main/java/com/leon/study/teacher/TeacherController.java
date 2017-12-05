@@ -11,8 +11,11 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
-    public TeacherController(TeacherService teacherService) {
+    private final TeacherConverter teacherConverter;
+
+    public TeacherController(TeacherService teacherService, TeacherConverter teacherConverter) {
         this.teacherService = teacherService;
+        this.teacherConverter = teacherConverter;
     }
 
     @GetMapping
@@ -26,13 +29,15 @@ public class TeacherController {
     }
 
     @PostMapping
-    public Teacher createTeacher(@Validated(Teacher.New.class) @RequestBody Teacher teacher) {
-        return teacherService.createTeacher(teacher);
+    public Teacher createTeacher(@Validated(TeacherDTO.New.class) @RequestBody TeacherDTO teacher) {
+        Teacher newTeacher = teacherConverter.toTeacherForCreate(teacher);
+        return teacherService.createOrUpdateTeacher(newTeacher);
     }
 
     @PutMapping("/{id}")
-    public Teacher updateTeacher(@PathVariable Long id, @Validated(Teacher.Existing.class) @RequestBody Teacher teacher) {
-        return teacherService.updateTeacher(id, teacher);
+    public Teacher updateTeacher(@PathVariable Long id, @Validated(TeacherDTO.Existing.class) @RequestBody TeacherDTO teacher) {
+        Teacher updatedTeacher = teacherConverter.toTeacherForUpdate(id, teacher);
+        return teacherService.createOrUpdateTeacher(updatedTeacher);
     }
 
     @DeleteMapping("/{id}")

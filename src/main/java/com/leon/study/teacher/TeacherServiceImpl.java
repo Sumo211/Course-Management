@@ -1,7 +1,6 @@
 package com.leon.study.teacher;
 
-import com.leon.study.common.ResourceNotFoundException;
-import org.springframework.beans.BeanUtils;
+import com.leon.study.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,15 +28,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Teacher createTeacher(Teacher teacher) {
+    public Teacher createOrUpdateTeacher(Teacher teacher) {
         return teacherRepository.save(teacher);
-    }
-
-    @Override
-    public Teacher updateTeacher(Long id, Teacher teacher) {
-        Teacher currentTeacher = findOne(id);
-        BeanUtils.copyProperties(teacher, currentTeacher, "id");
-        return teacherRepository.save(currentTeacher);
     }
 
     @Override
