@@ -8,8 +8,8 @@ import java.util.stream.IntStream;
 
 public class ResourceNotFoundException extends RuntimeException {
 
-    public ResourceNotFoundException(Class clazz, Object... searchParamsMap) {
-        super(ResourceNotFoundException.generateMessage(clazz.getSimpleName(), toMap(String.class, String.class, searchParamsMap)));
+    public ResourceNotFoundException(Class clazz, Object... entries) {
+        super(ResourceNotFoundException.generateMessage(clazz.getSimpleName(), toMap(String.class, String.class, entries)));
     }
 
     private static String generateMessage(String resource, Map<String, String> searchParams) {
@@ -17,7 +17,7 @@ public class ResourceNotFoundException extends RuntimeException {
     }
 
     private static <K, V> Map<K, V> toMap(Class<K> keyType, Class<V> valueType, Object... entries) {
-        if (entries.length % 2 == 1) throw new IllegalArgumentException("Invalid Entries");
+        if (entries.length % 2 == 1) throw new IllegalArgumentException("Invalid entries");
         return IntStream.range(0, entries.length / 2)
                 .map(i -> i * 2)
                 .collect(HashMap::new,

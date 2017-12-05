@@ -1,5 +1,6 @@
 package com.leon.study.teacher;
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -25,12 +26,12 @@ public class TeacherController {
     }
 
     @PostMapping
-    public Teacher createTeacher(@RequestBody Teacher teacher) {
+    public Teacher createTeacher(@Validated(Teacher.New.class) @RequestBody Teacher teacher) {
         return teacherService.createTeacher(teacher);
     }
 
     @PutMapping("/{id}")
-    public Teacher updateTeacher(@PathVariable Long id, @RequestBody Teacher teacher) {
+    public Teacher updateTeacher(@PathVariable Long id, @Validated(Teacher.Existing.class) @RequestBody Teacher teacher) {
         return teacherService.updateTeacher(id, teacher);
     }
 

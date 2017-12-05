@@ -30,7 +30,7 @@ class APIError {
 
     APIError(HttpStatus status, Throwable ex) {
         this(status);
-        this.message = "Unexpected Error";
+        this.message = "Unexpected error";
         this.debugMessage = ex.getLocalizedMessage();
     }
 
