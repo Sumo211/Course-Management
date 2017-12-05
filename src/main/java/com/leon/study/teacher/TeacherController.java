@@ -1,8 +1,11 @@
 package com.leon.study.teacher;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Collection;
 
 @RestController
@@ -19,30 +22,33 @@ public class TeacherController {
     }
 
     @GetMapping
-    public Collection<Teacher> findAll() {
-        return teacherService.findAll();
+    public ResponseEntity<Collection<Teacher>> findAll() {
+        return ResponseEntity.ok(teacherService.findAll());
     }
 
     @GetMapping("/{id}")
-    public Teacher findOne(@PathVariable Long id) {
-        return teacherService.findOne(id);
+    public ResponseEntity<Teacher> findOne(@PathVariable Long id) {
+        return ResponseEntity.ok(teacherService.findOne(id));
     }
 
     @PostMapping
-    public Teacher createTeacher(@Validated(TeacherDTO.New.class) @RequestBody TeacherDTO teacher) {
+    public ResponseEntity<Void> createTeacher(@Validated(TeacherDTO.New.class) @RequestBody TeacherDTO teacher) {
         Teacher newTeacher = teacherConverter.toTeacherForCreate(teacher);
-        return teacherService.createOrUpdateTeacher(newTeacher);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(teacherService.createOrUpdateTeacher(newTeacher).getId()).toUri();
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")
-    public Teacher updateTeacher(@PathVariable Long id, @Validated(TeacherDTO.Existing.class) @RequestBody TeacherDTO teacher) {
+    public ResponseEntity<Teacher> updateTeacher(@PathVariable Long id, @Validated(TeacherDTO.Existing.class) @RequestBody TeacherDTO teacher) {
         Teacher updatedTeacher = teacherConverter.toTeacherForUpdate(id, teacher);
-        return teacherService.createOrUpdateTeacher(updatedTeacher);
+        return ResponseEntity.ok(teacherService.createOrUpdateTeacher(updatedTeacher));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTeacher(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTeacher(@PathVariable Long id) {
         teacherService.deleteTeacher(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
