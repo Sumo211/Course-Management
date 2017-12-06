@@ -3,6 +3,7 @@ package com.leon.study.teacher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -27,8 +28,13 @@ public class TeacherController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Teacher> findOne(@PathVariable Long id) {
-        return ResponseEntity.ok(teacherService.findOne(id));
+    public ResponseEntity<Teacher> findOne(@PathVariable Long id, WebRequest webRequest) {
+        Teacher teacher = teacherService.findOne(id);
+        if (webRequest.checkNotModified(teacher.getVersion())) {
+            return null;
+        } else {
+            return ResponseEntity.ok().eTag(teacher.getVersion().toString()).body(teacherService.findOne(id));
+        }
     }
 
     @PostMapping
