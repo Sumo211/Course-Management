@@ -28,12 +28,12 @@ public class TeacherController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Teacher> findOne(@PathVariable Long id, WebRequest webRequest) {
+    public ResponseEntity<QueryTeacherDTOV2> findOne(@PathVariable Long id, WebRequest webRequest) {
         Teacher teacher = teacherService.findOne(id);
         if (webRequest.checkNotModified(teacher.getVersion())) {
             return null;
         } else {
-            return ResponseEntity.ok().eTag(teacher.getVersion().toString()).body(teacherService.findOne(id));
+            return ResponseEntity.ok().eTag(teacher.getVersion().toString()).body(new QueryTeacherDTOV2(teacher.getName(), teacher.getTitle().name()));
         }
     }
 
