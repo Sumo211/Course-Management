@@ -2,11 +2,11 @@ server:
   port: 2772
 
 spring:
+  application:
+    name: Course Management
   datasource:
     url: jdbc:postgresql:course
-    #url: jdbc:postgresql://172.17.0.2:5432/course
     username: postgres
-    #password: 123456
     password: Hoaibao211
   jpa:
     hibernate:
@@ -14,6 +14,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  redis:
+    host: localhost
+    port: 6379
 
 logging:
   level:
